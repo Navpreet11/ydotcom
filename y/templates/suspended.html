@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>𝕐.com account suspended</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                      min-height: 100vh;
+            background:black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #ffffff;
+             overflow: hidden
+        }
+
+        .container {
+              background: linear-gradient(360deg,rgba(0, 0, 0, 1) 0%, rgba(31, 31, 31, 1) 50%, rgba(59, 59, 59, 1) 100%);
+            border-radius: 12px;
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid #404040;
+        }
+
+        .microsoft-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .logo-squares {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            width: 24px;
+            height: 24px;
+            gap: 2px;
+            margin-right: 10px;
+        }
+
+    
+
+       
+        .brand-text {
+            font-size: 50px;
+          
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .email {
+            color: #0078d4;
+            font-size: 14px;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #ffffff;
+            line-height: 1.3;
+        }
+
+        .description {
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+            color: #cccccc;
+        }
+
+        .link {
+            color: #0078d4;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .link:hover {
+            color: #106ebe;
+            text-decoration: underline;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 30px 0 15px 0;
+            color: #ffffff;
+        }
+
+        .unlock-description {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #cccccc;
+        }
+
+        .highlight-link {
+            background: rgba(0, 120, 212, 0.1);
+            padding: 2px 4px;
+            border-radius: 4px;
+            border: 1px solid rgba(0, 120, 212, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 25px;
+                margin: 10px;
+            }
+            
+            .title {
+                font-size: 22px;
+            }
+            
+            .brand-text {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 25px 20px;
+            }
+            
+            .title {
+                font-size: 20px;
+            }
+            
+            .description, .unlock-description {
+                font-size: 13px;
+            }
+            
+            .section-title {
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .container {
+                padding: 20px 15px;
+            }
+            
+            .title {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+                    <h1>𝕐  </h1>
+<br>
+        
+        
+              
+        <h1 class="title">Your account has been suspended</h1>
+        
+        <p class="description">
+            We've detected some activity that violates our 
+            <a href="{{url_for("terms")}}" class="link">𝕐.com term's of service</a> and have suspended your account.
+        </p>
+
+ <h2 class="section-title">Appeal for desuspension</h2>
+        
+        <p class="unlock-description">
+            To desuspend your account, you'll need  to appeal against our decision . Navigate to 
+            <a href="{{url_for("checkappeal")}}" class="link highlight-link">Appeal for desuspension</a>
+        </p>
+        
+            </div>
+</body>
+</html>

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            line-height: 1.4;
+        }
+        
+        /* Header styles */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            border-bottom: 1px solid #2f3336;
+            position: sticky;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.1);
+            z-index: 100;
+background-color: rgba(0,0,0,0.1);
+  -webkit-backdrop-filter: blur(100px);
+  backdrop-filter: blur(10px);
+
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+        
+        .profile-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: bold;
+        }
+        
+        .header-middle {
+            display: flex;
+            align-items: center;
+        }
+        
+        .x-logo {
+            font-weight: bold;
+            font-size: 24px;
+        }
+        
+        .header-right .premium-button {
+            background-color:black;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-weight: bold;
+            z-index: 100;
+background-color: rgba(0,0,0,0.0);
+  -webkit-backdrop-filter: blur(100px);
+  backdrop-filter: blur(100px);
+
+        }
+        
+        /* Tab navigation */
+        .tab-navigation {
+            display: flex;
+            border-bottom: 1px solid #2f3336;
+        }
+        
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 16px 0;
+            font-weight: bold;
+            color: #71767b;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .tab.active {
+            color: #fff;
+        }
+        
+        .tab.active::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: #1d9bf0;
+            border-radius: 4px 4px 0 0;
+        }
+        
+        /* Post styles */
+        .post {
+            padding: 12px 16px;
+            border-bottom: 1px solid #2f3336;
+        }
+        
+        .post-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+        
+        .post-user {
+            display: flex;
+            align-items: center;
+        }
+        
+        .user-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            margin-right: 12px;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+  .user-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+
+   .user-avatar-nav{
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            margin-right: 12px;
+            overflow: hidden;
+      background-color: #333;
+
+        }
+
+        
+  .user-avatar-nav img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+
+              
+        .user-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .user-name {
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .verified-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 18px;
+            height: 18px;
+      
+            border-radius: 50%;
+            margin-left: 10px;
+            font-size: 12px;
+            
+        }
+        
+        .user-handle, .post-time {
+            color: #71767b;
+            font-size: 14px;
+        }
+        
+        .post-more {
+            color: #71767b;
+        }
+        
+        .post-content {
+            margin-bottom: 12px;
+        }
+        
+        .post-media {
+            margin: 12px 0;
+            border-radius: 16px;
+            overflow: hidden;
+            
+        }
+        
+        .post-media img, .post-media video {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+        }
+        
+        .post-source {
+            color: #71767b;
+            font-size: 14px;
+            margin: 8px 0;
+        }
+        
+        .post-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 12px;
+            color: #71767b;
+        }
+        
+        .post-action {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        /* Ad post */
+        .ad-post {
+            padding: 12px 16px;
+            border-bottom: 1px solid #2f3336;
+        }
+        
+        .ad-badge {
+            background-color: transparent;
+            color: #71767b;
+            font-size: 14px;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        
+        /* Bottom navigation */
+        .bottom-nav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #000;
+            border-top: 1px solid #2f3336;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 100;
+background-color: rgba(0,0,0,0.0);
+  -webkit-backdrop-filter: blur(100px);
+  backdrop-filter: blur(10px);
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #fff;
+            font-size: 24px;
+        }
+        
+        /* Video controls overlay */
+        .video-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px;
+            background-color: rgba(0, 0, 0, 0.5);
+            position: relative;
+            bottom: 0;
+        }
+        
+        .video-progress {
+            height: 4px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.3);
+            position: relative;
+            margin: 0 8px;
+        }
+        
+        .video-played {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 10%;
+            background-color: #fff;
+        }
+        
+        .video-time {
+            color: #fff;
+            font-size: 12px;
+        }
+        
+        .video-button {
+            color: #fff;
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        /* Add button */
+        .add-button {
+            position: fixed;
+            right: 20px;
+            bottom: 80px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: #1d9bf0;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Flask specific elements */
+        .flash-message {
+            padding: 12px 16px;
+            background-color: #1d9bf0;
+            color: white;
+            margin-bottom: 4px;
+        }
+
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+a:link {
+  color: white;
+}
+
+a:visited {
+  color: white;
+}
+
+a:hover {
+color: white;
+}
+
+a:active {
+ color:white;
+} 
+
+</style>
+<body>
+
+        <header class="header">
+        <div class="header-left">
+           <a href=""> <div class="profile-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-gear-fill" viewBox="0 0 16 16">
+  <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+</svg></div></a>
+        </div>
+        <div class="header-middle">
+            <svg width="50" height="50" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <text x="50%" y="50%" font-size="120" font-family="serif" font-weight="bold" text-anchor="middle" dominant-baseline="middle" fill="white">
+    𝕐
+  </text>
+</svg>
+</div>
+        </div>
+        <div class="header-right">
+            <button class="premium-button"></button>
+        </div>
+    </header>
+
+    
+                                 
+{% for i  in lis%}
+          <div class="post">
+        <div class="post-header">
+            <div class="post-user">
+                <div class="user-avatar">
+                    <img src="{{i["dp"]}}" alt="User picture">
+                </div>
+                <div class="user-info">
+                    <a href="{{url_for("idofuser",userh=i["uh"])}}"><div class="user-name">
+                       {{i["n"]}}
+
+  <span class="verified-badge"><img src={{i["vv"]}} width=20px height=20px></img></span>
+
+
+
+                   </div>
+                    <div class="user-handle">{{i["uh"]}}· {{i["dt"]}}</div>
+</a>
+                </div>
+            </div>
+        
+        </div>
+        <div class="post-content">
+            <p>{{i["c"]}}  </p>
+        </div>
+  <div class="post-media">
+            <img src="{{ i["img"] }}" onerror="this.style.display='none'" loading="lazy"></img>
+    
+</div>
+
+<a href="{{url_for("like",post=i["c"])}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
+  <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a10 10 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733q.086.18.138.363c.077.27.113.567.113.856s-.036.586-.113.856c-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.2 3.2 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.8 4.8 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"/>
+</svg>{{i["lik"]}}</a>
+ 
+              </div>
+                  </div>
+
+  {%endfor%}
+
+
+    <nav class="bottom-nav">
+        <a href=""><div class="nav-item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+  <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>
+  <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"/>
+</svg></div></a>
+      <a href="{{url_for("checksussear")}}">  <div class="nav-item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+</svg></div></a>
+      <a href="{{url_for("add")}}">  <div class="nav-item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
+</svg></div></a>
+        <a href="{{url_for("noti")}}"><div class="nav-item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+  <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"/>
+</svg></div></a>
+       <a href="{{url_for("profile")}}"> <div class="nav-item"> <div class="user-avatar-nav">
+                    <img src="https://pbs.twimg.com/profile_images/1893803697185910784/Na5lOWi5_400x400.jpg" alt="User picture">
+                </div>
+</div></a>
+    </nav>
+</body>
+</html>

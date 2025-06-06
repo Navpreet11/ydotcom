@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .close-icon, .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .close-icon {
+            cursor: pointer;
+        }
+        
+        .container {
+            max-width: 600px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        h1 {
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        input {
+            background-color: transparent;
+            border: 1px solid #333;
+            color: #fff;
+            border-radius: 4px;
+            padding: 15px;
+            font-size: 16px;
+            outline: none;
+        }
+        
+        input:focus {
+            border-color: #1da1f2;
+        }
+        
+        .btn-link {
+            display: inline-block;
+            width: 100%;
+            border-radius: 50px;
+            padding: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.2s;
+            text-decoration: none;
+        }
+        
+        .next-btn {
+            background-color: #fff;
+            color: #000;
+            border: none;
+            margin-top: 10px;
+        }
+        
+        .next-btn:hover {
+            background-color: #e6e6e6;
+        }
+        
+        .forgot-btn {
+            background-color: transparent;
+            color: #fff;
+            border: 1px solid #333;
+            margin-top: 10px;
+        }
+        
+        .forgot-btn:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            color: #71767b;
+        }
+        
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid #333;
+        }
+        
+        .divider span {
+            padding: 0 10px;
+        }
+        
+        .signup-prompt {
+            text-align: center;
+            margin-top: 30px;
+            color: #71767b;
+            font-size: 15px;
+        }
+
+ .forgot{
+            text-align: left;
+            margin-top: 30px;
+            color: #71767b;
+            font-size: 15px;
+        }
+
+        
+        .signup-link {
+            color: #1da1f2;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 24px;
+            }
+        }
+
+
+   .post-button {
+            background-color: #1d9bf0;
+            color: white;
+            border: none;
+            border-radius: 9999px;
+            padding: 8px 16px;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background-color 0.2s;margin-bottom:50%
+        }
+
+.available-for-btn {
+  --animation: 2s ease-in-out infinite;
+  display: flex;
+  align-items: center;
+  column-gap: 2px;
+  color: white;
+  background-color: red;
+  border-radius: 100px;
+  padding: 1rem 1.5rem 1rem 0.5rem;
+  outline: none;
+  border: none;
+  font-weight: 600;
+  position: relative;
+ margin-left:20%;
+ bottom:50%;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+}
+.available-for-btn:hover {
+  background-color: #ffffff;
+}
+.available-for-btn:active {
+  background-color: #e1f9dc;
+  border: solid 2px #178d00;
+}
+.circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  border: solid 2px #178d00;
+  border-radius: 50%;
+  margin: 0 10px;
+  background-color: transparent;
+  animation: circle-keys var(--animation);
+}
+
+.circle .dot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #178d00;
+  animation: dot-keys var(--animation);
+}
+
+.circle .outline {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  animation: outline-keys var(--animation);
+}
+.circle:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.circle:nth-child(2) .dot {
+  animation-delay: 0.3s;
+}
+.circle:nth-child(1) .outline {
+  animation-delay: 0.9s;
+}
+.circle:nth-child(2) .outline {
+  animation-delay: 1.2s;
+}
+@keyframes circle-keys {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes dot-keys {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes outline-keys {
+  0% {
+    transform: scale(0);
+    outline: solid 20px var(--color);
+    outline-offset: 0;
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    outline: solid 0 transparent;
+    outline-offset: 20px;
+    opacity: 0;
+  }
+}
+
+
+
+  .empty-image {
+            width:20%;
+                   margin-bottom: 20px;
+            border-radius: 50%;
+            background-color:white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          margin-left:40%
+        }
+
+ .empty-image img {
+            width: 100%;
+            height: 100%;
+            object-fit:fill;
+     border-radius: 50%;
+
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a class="close-icon"></a>
+            <div class="logo"><svg width="50" height="50" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <text x="50%" y="50%" font-size="120" font-family="serif" font-weight="bold" text-anchor="middle" dominant-baseline="middle" fill="white">
+    𝕐
+  </text>
+</svg>
+</div>
+            <div></div> <!-- Empty div for spacing -->
+        </div>
+
+
+   
+
+        
+        <h1>Your password has been changed successfully.You will be logged out of this device!
+</h1>
+
+
+<div class="empty-image">
+             <img src="https://cdn-icons-gif.flaticon.com/17905/17905745.gif"></img>
+                            </div>
+
+
+
+     <a  style=" display: flex;
+            align-items: center;
+            justify-content: center;margin-bottom:90%
+    "href="{{url_for("delcookie")}}" class="post-button">Next</a>
+
+             
+            
+
+</body>
+</html>

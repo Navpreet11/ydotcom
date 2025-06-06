@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile UI</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    
+    body {
+      background-color: black;
+      color: #fff;
+    }
+    
+    .profile-container {
+      max-width: 100%;
+      margin: 0 auto;
+      background-color: black;
+      min-height: 100vh;
+    }
+    
+ .profile-container  img{
+      width: 100%;
+            height: 100%;
+            object-fit: cover;
+    }
+
+
+    .background-profile{
+      background-color: #202327;
+      height: 120px;
+      position: relative;
+    }
+    
+    .profile-avatar {
+      position: absolute;
+      top:20px;
+      left: 20px;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: #9d8178;
+      border: 4px solid #292e33;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .avatar-letter {
+      font-size: 42px;
+      color: white;
+      text-transform: lowercase;
+      font-weight: light;
+    }
+    
+    .profile-info {
+      padding: 60px 20px 20px;
+    }
+    
+    .profile-name {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    
+    .profile-handle {
+      color: #8899a6;
+      font-size: 15px;
+      margin-bottom: 15px;
+    }
+    
+    .profile-joined {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: #8899a6;
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+    
+    .calendar-icon {
+      width: 18px;
+      height: 18px;
+      fill: #8899a6;
+    }
+    
+    .nav-tabs {
+      display: flex;
+      border-bottom: 1px solid #38444d;
+    }
+    
+    .tab {
+      flex: 1;
+      text-align: center;
+      padding: 15px 0;
+      font-weight: medium;
+      color: #8899a6;
+      cursor: pointer;
+      position: relative;
+    }
+    
+    .tab.active {
+      color: #fff;
+    }
+    
+    .tab.active::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background-color: #1d9bf0;
+      border-radius: 4px 4px 0 0;
+    }
+
+   .verified-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 18px;
+            height: 18px;
+      
+            border-radius: 50%;
+            margin-left: 10px;
+            font-size: 12px;
+            
+        }
+
+    
+    .stories-container {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .story {
+      background-color: #202327;
+      border-radius: 12px;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .story-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .story-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #9d8178;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top:50%
+    }
+    
+    .story-avatar-letter {
+      color: white;
+      font-size: 20px;
+      text-transform: lowercase;
+    }
+    
+    .story-user-info {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .story-username {
+      font-weight: bold;
+      font-size: 15px;
+    }
+    
+    .story-handle {
+      color: #8899a6;
+      font-size: 14px;
+    }
+    
+    .story-content {
+      font-size: 15px;
+      line-height: 1.5;
+    }
+    
+    .story-date {
+      color: #8899a6;
+      font-size: 13px;
+      margin-top: 5px;
+    }
+    
+    .story-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      max-width: 300px;
+    }
+    
+  .user-avatar {
+            width: 100px;
+            height:100px;
+                        border-radius: 50%;
+            margin-left: 12px;top:80px;
+            overflow: hidden;
+            background-color: #333;
+                          position:absolute
+        }
+
+  .user-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+    .story-action {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: #8899a6;
+      font-size: 13px;
+    }
+    
+    .story-icon {
+      width: 16px;
+      height: 16px;
+      fill: #8899a6;
+    }
+    
+    @media (max-width: 480px) {
+      .profile-avatar {
+        width: 80px;
+        height: 80px;
+        bottom: -40px;
+      }
+      
+      .avatar-letter {
+        font-size: 36px;
+      }
+      
+      .profile-info {
+        padding-top: 50px;
+      }}
+    
+
+
+  .bottom-nav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: #000;
+            border-top: 1px solid #2f3336;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 100;
+background-color: rgba(0,0,0,0.0);
+  -webkit-backdrop-filter: blur(100px);
+  backdrop-filter: blur(10px);
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #fff;
+            font-size: 24px;
+        }
+
+  .user-avatar-nav{
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            margin-right: 12px;
+            overflow: hidden;
+      background-color: #333;
+
+        }
+
+        
+  .user-avatar-nav img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+      .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            border-bottom: 1px solid #2f3336;
+            position: ;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.1);
+            z-index: 100;
+background-color: rgba(0,0,0,0.1);
+  -webkit-backdrop-filter: blur(100px);
+  backdrop-filter: blur(10px);
+
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+        
+        .profile-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: bold;
+        }
+        
+        .header-middle {
+            display: flex;
+            align-items: center;
+        }
+        
+        .x-logo {
+            font-weight: bold;
+            font-size: 24px;
+        }
+        
+        .header-right .premium-button {
+            background-color:black;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-weight: bold;
+        }
+
+   .post-media {
+            margin: 12px 0;
+            border-radius: 16px;
+            overflow: hidden;
+            
+        }
+        
+        .post-media img, .post-media video {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+        }
+
+
+  </style>
+</head>
+<body>
+ <header class="header">
+        <div class="header-left">
+           <a href=""> <div class="profile-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-gear-fill" viewBox="0 0 16 16">
+  <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+</svg></div></a>
+        </div>
+
+
+
+        <div class="header-middle">
+            <div class="x-logo">{{username}}</div>
+        </div>
+        <div class="header-right">
+            <button class="premium-button"></button>
+        </div>
+    </header>
+
+
+
+  <div class="profile-container">
+{% for i in lis%}
+
+    <div class="background-profile"><img src="{{i["bg"]}}"></img></div>
+
+    
+    <div class="user-avatar"><img src="{{i["dp"]}}"></img></div>
+
+         
+{%endfor%}
+
+{% for i in lis%}
+    
+    <div class="profile-info">
+      <div class="profile-name">{{i["n"]}}  <span class="verified-badge"><img src="{{i["v"]}} " width=20px height=20px></img></span> </div> 
+
+
+      <div class="profile-handle">{{i["uh"]}}</div>
+      <div class="profile-joined">
+        <svg class="calendar-icon" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"></path>
+        </svg>
+        Joined {{i["doj"]}}
+      </div>
+    </div>
+    
+{%endfor%}
+
+{% for i in l%}
+    <div class="nav-tabs">
+      <div class="tab active">Post's</div>
+      </div>
+    
+    <div class="stories-container">
+      <div class="story">
+        <div class="story-header">
+          <div class="story-avatar"> <img src="{{i["dp"]}}"></img>
+
+        
+          </div>
+          <div class="story-user-info">
+            <div class="story-username">{{i["n"]}}      <span class="verified-badge"><img src={{i["vv"]}} width=20px height=20px></img></span>
+  </div>
+            <div class="story-handle">{{i["uh"]}}   </div>
+          </div>
+        </div>
+     
+        {{i["cont"]}}  
+
+       
+<div class="post-media">
+            <img src="{{ i["img"] }}" onerror="this.style.display='none'" loading="lazy"></img>
+    
+</div>
+
+{{i["lik"]}}
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
+  <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a10 10 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733q.086.18.138.363c.077.27.113.567.113.856s-.036.586-.113.856c-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.2 3.2 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.8 4.8 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"/></svg>
+
+<div class="story-date">{{i["dt"]}}</div>
+
+      
+{%endfor%}
+
+          </div>
+         
+   
+
+<nav class="bottom-nav">
+        <a href="{{url_for("home")}}"><div class="nav-item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+  <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>
+  <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z"/>
+</svg></div></a>
+      <a href="">  <div class="nav-item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+</svg></div></a>
+      <a href="">  <div class="nav-item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
+</svg></div></a>
+        <a href=""><div class="nav-item"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+  <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"/>
+</svg></div></a>
+       <a href=""> <div class="nav-item"> <div class="user-avatar-nav">
+                    <img src="https://pbs.twimg.com/profile_images/1893803697185910784/Na5lOWi5_400x400.jpg" alt="User picture">
+                </div>
+</div></a>
+    </nav>
+
+</body>
+</html>
